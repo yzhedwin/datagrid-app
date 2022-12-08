@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+   <meta charset="UTF-8" />
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+   <meta
+     name="viewport"
+     content="width=device-width, initial-scale=1.0"
+   />
+   <title>Ag Grid App</title>
+   <!-- Include the JS for AG Grid -->
+   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/ag-grid-community/dist/ag-grid-community.min.noStyle.js"></script>
+   <!-- Include the core CSS, this is needed by the grid -->
+   <link rel="stylesheet"
+     href="https://cdn.jsdelivr.net/npm/ag-grid-community/styles/ag-grid.css"/>
+   <!-- Include the theme CSS, only need to import the theme you are going to use -->
+   <link rel="stylesheet"
+     href="https://cdn.jsdelivr.net/npm/ag-grid-community/styles/ag-theme-alpine.css"/>
+    <link rel="stylesheet" href='css/menu.css'>
+ </head>
+ <body>
+    <div class="table-menu">
+        <button onclick="selectPage()" class="menubtn">Table</button>
+        <div id="menulist" class="menu-content">
+          <a href="/">Gateway</a>
+          <a href="device">Devices</a>
+          <a href="metric">Metric</a>
+          <a href="user">User</a>
+        </div>
+      </div>
+  <script src='js/menu.js'></script>
+   <!-- Button to demonstrate calling the grid's API. -->
+   <button onclick="deselect()">Deselect Rows</button>
+   <!-- The div that will host the grid. ag-theme-alpine is the theme. -->
+   <!-- The gid will be the size that this element is given. -->
+   <div id="myGrid" class="ag-theme-alpine" style="height: 500px"></div>
+   <script src='js/gateway.js'></script>
+ </body>
+</html>

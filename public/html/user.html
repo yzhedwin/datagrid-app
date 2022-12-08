@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>JavaScript example</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style media="only screen">
+      html,
+      body {
+        height: 100%;
+        width: 100%;
+        margin: 0;
+        box-sizing: border-box;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      html {
+        position: absolute;
+        top: 0;
+        left: 0;
+        padding: 0;
+        overflow: auto;
+      }
+
+      body {
+        padding: 1rem;
+        overflow: auto;
+      }
+    </style>
+    <link rel="stylesheet" href="css/menu.css" />
+    <link rel="stylesheet" href="css/user.css" />
+  </head>
+  <body>
+    <div class="table-menu">
+      <button onclick="selectPage()" class="menubtn">Table</button>
+      <div id="menulist" class="menu-content">
+        <a href="/">Gateway</a>
+        <a href="device">Devices</a>
+        <a href="metric">Metric</a>
+        <a href="user">User</a>
+      </div>
+    </div>
+    <script src="js/menu.js"></script>
+    <!-- <div class="example-wrapper">
+      <div style="margin-bottom: 1rem">
+        <button onclick="onBtForEachNode()">For-Each Node</button>
+        <button onclick="onBtForEachNodeAfterFilter()">
+          For-Each Node After Filter
+        </button>
+        <button onclick="onBtForEachNodeAfterFilterAndSort()">
+          For-Each Node After Filter and Sort
+        </button>
+        <button onclick="onBtForEachLeafNode()">For-Each Leaf Node</button>
+      </div> -->
+      <div id="myGrid" style="height: 100%" class="ag-theme-alpine"></div>
+    </div>
+    <script>
+      var __basePath = "./";
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/ag-grid-enterprise@28.2.1/dist/ag-grid-enterprise.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
+    <script src="js/user.js"></script>
+  </body>
+</html>
