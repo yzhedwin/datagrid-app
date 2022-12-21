@@ -1,4 +1,10 @@
-# beginner-html-site-styled
-A simple one page website created to help complete beginners learn HTML basics, which in this repo has also been styled to help beginners learn CSS basics. The styling is explained over the course of [https://developer.mozilla.org/en-US/Learn/Getting_started_with_the_web/CSS_basics](https://developer.mozilla.org/en-US/Learn/Getting_started_with_the_web/CSS_basics).
+# DataGrid App
+A MySQL data managagement application to allow user to manipulate and manage data easily.
 
-[Run the example live](http://mdn.github.io/beginner-html-site-styled/).
+## Setup and Usage:
+
+**Start server**
+1. Navigate to `root` directory
+2. Run `npm install`
+3. Run `npm run start` to start server with Nodemon.
+4. Server starts at `localhost:3005`
