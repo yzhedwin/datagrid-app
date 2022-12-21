@@ -3,6 +3,11 @@
   flex-direction: column;
   height: 100%;
 }
+.outer-div {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
 
 #myGrid {
   flex: 1 1 0px;

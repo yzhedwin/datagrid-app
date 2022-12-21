@@ -1,29 +1,29 @@
 const gridOptions = {
   columnDefs: [
-    { field: "gateway_id", rowGroup: true, hide: true },
-    { field: "device_id", rowGroup: true, hide: true },
-    { field: "edge_id", rowGroup: true, hide: true },
+    { field: "gateway_id", rowGroup: true, hide: false },
+    { field: "device_id", rowGroup: true, hide: false },
+    { field: "edge_id", rowGroup: true, hide: false },
     { field: "metric_id" },
     { field: "cust_id" },
     { field: "addr_id" },
-    { field: "brand" },
-    { field: "connection" },
-    { field: "created" },
+    { field: "gateway_name" },
+    { field: "device_name" },
+    { field: "metric_name" },
     { field: "description" },
     { field: "decs" },
-    { field: "disabled" },
-    { field: "deteled" },
+    { field: "brand" },
+    { field: "connection" },
     { field: "g_group" },
-    { field: "latitude" },
-    { field: "longitude" },
+
     { field: "mac_addr" },
     { field: "model" },
     { field: "modified" },
-    { field: "name" },
     { field: "nodered_url" },
     { field: "os" },
     { field: "profile" },
     { field: "serial_no" },
+    { field: "latitude" },
+    { field: "longitude" },
     { field: "site" },
     { field: "ssh_port" },
     { field: "status" },
@@ -31,13 +31,18 @@ const gridOptions = {
     { field: "tunnel_server" },
     { field: "uom" },
     { field: "version" },
+    { field: "created" },
+    { field: "disabled" },
+    { field: "deteled" },
   ],
   defaultColDef: {
-    flex: 1,
-    minWidth: 100,
     sortable: true,
     filter: true,
+    resizable: true,
   },
+  enableRangeSelection: true,
+  rowSelection: "multiple", // allow rows to be selected
+  animateRows: true, // have rows animate to new positions when sorted
   autoGroupColumnDef: {
     minWidth: 200,
   },
@@ -79,6 +84,14 @@ const config = {
     Authorization: `Basic YWRtaW46cGFzc3dvcmQx`,
   },
 };
+function autoSizeAll(skipHeader) {
+  const allColumnIds = [];
+  gridOptions.columnApi.getColumns().forEach((column) => {
+    allColumnIds.push(column.getId());
+  });
+
+  gridOptions.columnApi.autoSizeColumns(allColumnIds, skipHeader);
+}
 // setup the grid after the page has finished loading
 document.addEventListener("DOMContentLoaded", () => {
   const gridDiv = document.querySelector("#myGrid");
@@ -97,3 +110,4 @@ document.addEventListener("DOMContentLoaded", () => {
       gridOptions.api.setRowData(JSON.parse(response.data.body));
     });
 });
+autoSizeAll(false);

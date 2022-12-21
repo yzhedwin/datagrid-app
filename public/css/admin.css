@@ -1,0 +1,8 @@
+.outer-div {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.grid-wrapper {
+  flex: 1 1 auto;
+}

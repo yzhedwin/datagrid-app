@@ -31,17 +31,18 @@
     <link rel="stylesheet" href="css/user.css" />
   </head>
   <body>
-    <div class="table-menu">
-      <button onclick="selectPage()" class="menubtn">Table</button>
-      <div id="menulist" class="menu-content">
-        <a href="/">Gateway</a>
-        <a href="device">Devices</a>
-        <a href="metric">Metric</a>
-        <a href="user">User</a>
+    <div class="outer-div">
+      <div class="table-menu">
+        <button onclick="selectPage()" class="menubtn">User Table</button>
+        <div id="menulist" class="menu-content">
+          <a href="/">Gateway</a>
+          <a href="device">Devices</a>
+          <a href="metric">Metric</a>
+          <a href="user">User</a>
+        </div>
       </div>
-    </div>
-    <script src="js/menu.js"></script>
-    <!-- <div class="example-wrapper">
+
+      <!-- <div class="example-wrapper">
       <div style="margin-bottom: 1rem">
         <button onclick="onBtForEachNode()">For-Each Node</button>
         <button onclick="onBtForEachNodeAfterFilter()">
@@ -60,5 +61,6 @@
     <script src="https://cdn.jsdelivr.net/npm/ag-grid-enterprise@28.2.1/dist/ag-grid-enterprise.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
     <script src="js/user.js"></script>
+    <script src="js/menu.js"></script>
   </body>
 </html>

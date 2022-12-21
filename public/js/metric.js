@@ -14,30 +14,63 @@ const config = {
 const gridOptions = {
   // each entry here represents one column
   columnDefs: [
-    { field: "created" },
-    { field: "decs" },
-    { field: "device_id" },
     { field: "id" },
-    { field: "modified" },
-    { field: "name" },
-    { field: "profile" },
+    { field: "device_id" },
+    { field: "name", minWidth: 200, maxWidth: 275 },
+    { field: "decs", minWidth: 200, maxWidth: 275 },
+    { field: "profile", minWidth: 500, maxWidth: 600 },
     { field: "uom" },
+    { field: "created" },
+    { field: "modified" },
   ],
 
   // default col def properties get applied to all columns
-  defaultColDef: { flex: 1, sortable: true, filter: true, editable: true },
-
+  defaultColDef: {
+    sortable: true,
+    filter: true,
+    editable: true,
+    resizable: true,
+  },
+  enableRangeSelection: true,
+  enableFillHandle: true,
   rowSelection: "multiple", // allow rows to be selected
   animateRows: true, // have rows animate to new positions when sorted
-
-  // example event handler
-  onCellClicked: (params) => {
-    console.log("cell was clicked", params);
-  },
-  getRowId: (params) => params.data.id,
   readOnlyEdit: true,
+  // example event handler
+  // onCellClicked: (params) => {
+  //   console.log("cell was clicked", params);
+  // },
+  getRowId: (params) => params.data.id,
   onCellEditRequest: onCellEditRequest,
+  onCellValueChanged: onCellValueChanged,
+  // fillOperation: (fillOperationParams) => {
+  //   console.log(fillOperationParams);
+  //   return "Foo";
+  // },
 };
+function autoSizeAll(skipHeader) {
+  const allColumnIds = [];
+  gridOptions.columnApi.getColumns().forEach((column) => {
+    allColumnIds.push(column.getId());
+  });
+
+  gridOptions.columnApi.autoSizeColumns(allColumnIds, skipHeader);
+}
+
+function onCellValueChanged(params) {
+  var changedData = [params.data];
+  params.api.applyTransaction({ update: changedData });
+  const body = {
+    table: "metric",
+    id: params.data.id,
+    field: params.colDef.field,
+    newVal: params.newValue,
+  };
+  const url = `https://krc2esyxjc.execute-api.ap-southeast-1.amazonaws.com/beta/datagrid/admin`;
+  axios.patch(url, body, config).then((response) => {
+    console.log(response);
+  });
+}
 
 function onCellEditRequest(event) {
   const oldData = event.data;
@@ -76,3 +109,5 @@ axios
 
     gridOptions.api.setRowData(response.data);
   });
+
+autoSizeAll(false);
