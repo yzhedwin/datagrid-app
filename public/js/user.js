@@ -106,8 +106,8 @@ document.addEventListener("DOMContentLoaded", () => {
       config
     )
     .then((response) => {
-      // console.log(JSON.parse(response.data.body));
-      gridOptions.api.setRowData(JSON.parse(response.data.body));
+      //console.log(response);
+      gridOptions.api.setRowData(response.data);
     });
 });
 autoSizeAll(false);
